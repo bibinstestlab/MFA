@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MFA Setup Guide - McDonald's UAE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Visualization & Content Choices: Report Info -> Goal -> Viz/Presentation Method -> Interaction -> Justification -> Library/Method.
+        - Intro/Why MFA: Inform -> Text blocks in "Overview" tab, McD logo placeholder -> Read -> Standard intro -> HTML/Tailwind.
+        - MFA Methods List: Inform -> List in "Overview" -> Read -> Summarize options -> HTML/Tailwind.
+        - Authenticator Setup Steps: Instruct -> Detailed steps in "Microsoft Authenticator" tab, bolded keys, list format, Unicode icons (📱, 💻, 📷) -> Follow steps -> Clear instructions -> HTML/Tailwind.
+        - Mobile Verification Setup Steps: Instruct -> Detailed steps in "Mobile SMS/Call" tab, bolded keys, list format, Unicode icons (📱, 💬) -> Follow steps -> Clear instructions -> HTML/Tailwind.
+        - Conclusion: Summarize/Support -> Text block in "Important Notes" tab -> Read -> Standard conclusion -> HTML/Tailwind.
+    -->
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .tab-button { transition: background-color 0.3s ease, color 0.3s ease; }
+        .tab-button.active { background-color: #DC2626; color: white; } /* Red-600 */
+        .tab-button:not(.active):hover { background-color: #FEE2E2; } /* Red-100 */
+        .content-section { display: none; }
+        .content-section.active { display: block; }
+        .step-item { margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative; }
+        .step-item::before {
+            content: "➔";
+            position: absolute;
+            left: 0;
+            color: #D97706; /* Amber-600 for McDonald's yellow-ish accent */
+        }
+        .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background-color: #DC2626; /* Red-600 */
+            color: #FBBF24; /* Amber-400 for McDonald's Yellow */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            border-radius: 0.5rem;
+            margin-right: 1rem;
+        }
+         .header-title {
+            font-size: 1.75rem; /* Slightly smaller for balance */
+            font-weight: 700;
+            color: #B91C1C; /* Darker Red-700 for title */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col items-center py-8 px-4">
+
+    <div class="w-full max-w-4xl bg-white shadow-xl rounded-lg overflow-hidden">
+        <header class="bg-gray-50 p-6 border-b border-gray-200">
+            <div class="flex items-center">
+                <img src="./assets/MLogo.png" alt="McDonald's Logo" class="w-20 h-20 rounded-md mr-4">
+			<div>
+                    <h1 class="header-title">Multi-Factor Authentication (MFA)</h1>
+                    <p class="text-gray-600">Setup Guide for McDonald's UAE Email Access</p>
+                </div>
+            </div>
+        </header>
+
+        <nav class="bg-gray-100 border-b border-gray-200">
+            <div class="max-w-4xl mx-auto px-2 sm:px-0">
+                <div class="relative flex items-center justify-between h-16">
+                    <div class="flex items-center justify-center sm:items-stretch sm:justify-start w-full">
+                        <div class="flex space-x-1 sm:space-x-2 w-full justify-around">
+                            <button data-tab="overview" class="tab-button active text-gray-700 hover:bg-red-100 px-3 py-2 rounded-md text-sm font-medium w-1/4 text-center">📋 Overview</button>
+                            <button data-tab="authenticator" class="tab-button text-gray-700 hover:bg-red-100 px-3 py-2 rounded-md text-sm font-medium w-1/4 text-center">📱 Authenticator</button>
+                            <button data-tab="mobile" class="tab-button text-gray-700 hover:bg-red-100 px-3 py-2 rounded-md text-sm font-medium w-1/4 text-center">💬 Mobile/SMS</button>
+                            <button data-tab="notes" class="tab-button text-gray-700 hover:bg-red-100 px-3 py-2 rounded-md text-sm font-medium w-1/4 text-center">📌 Notes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="p-6">
+            <section id="overview" class="content-section active">
+                <h2 class="text-2xl font-semibold text-red-700 mb-4">MFA: Enhancing Your Account Security</h2>
+                <p class="mb-4">This guide outlines how to set up and use Multi-Factor Authentication (MFA) to enhance the security of your email account. MFA adds an essential extra layer of protection by requiring you to verify your identity using more than one method, even if your password becomes compromised.</p>
+                
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-md mb-6">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-2">Why is MFA Important?</h3>
+                    <p class="text-yellow-700">In today's digital world, robust security is crucial. MFA significantly reduces the risk of unauthorized access to your account and sensitive information. By requiring a second form of verification, it helps protect both your data and the overall integrity of our environment.</p>
+                </div>
+
+                <h3 class="text-xl font-semibold text-red-700 mb-3">Available MFA Methods:</h3>
+                <ul class="list-disc list-inside space-y-2 mb-4 pl-4 text-gray-700">
+                    <li><strong>Microsoft Authenticator App:</strong> A mobile application that provides push notifications or verification codes for secure login.</li>
+                    <li><strong>Mobile Verification (SMS/Phone Call):</strong> Receiving a verification code via a text message (SMS) or a phone call to your registered mobile device.</li>
+                </ul>
+                <p class="text-sm text-gray-600">Please select a tab above to view detailed setup instructions for each method.</p>
+            </section>
+
+            <section id="authenticator" class="content-section">
+                <h2 class="text-2xl font-semibold text-red-700 mb-4">1: Setting Up Microsoft Authenticator 📱</h2>
+                <p class="mb-6 text-gray-600">This section guides you through adding your work email account to the Microsoft Authenticator app.</p>
+
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-700 mb-2">1.1 Verify Microsoft Authenticator App Installation</h3>
+                        <ul class="list-none space-y-2">
+                            <li class="step-item">The Microsoft Authenticator app should already be installed on your device or DFS tablet. If you cannot locate it, please check your application list.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-700 mb-2">1.2 Access Security Info Portal 💻</h3>
+                         <ul class="list-none space-y-2">
+                            <li class="step-item">Log in to your work email account using your web browser on your BO-PC.</li>
+                            <li class="step-item">Once logged in, navigate to the Microsoft sign-ins portal: <a href="https://mysignins.microsoft.com" target="_blank" class="text-blue-600 hover:underline">https://mysignins.microsoft.com</a>.</li>
+                            <li class="step-item">On the left-hand menu or main page, locate and click on "<strong>Security info</strong>".</li>
+                            </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-700 mb-2">1.3 Add Authenticator App as a Sign-in Method</h3>
+                        <ul class="list-none space-y-2">
+                            <li class="step-item">On the Security info page, click on "<strong>Add sign-in method</strong>".</li>
+							<img src="./assets/Add sign-in method.png" alt="Descriptive alt text" class="mt-4 rounded-md shadow-md">
+                            <li class="step-item">From the dropdown menu, select "<strong>Authenticator app</strong>" and click "<strong>Add</strong>".</li>
+                            <img src="./assets/dropdown menu Auth.jpg" alt="Descriptive alt text" class="mt-4 rounded-md shadow-md">
+                          	<li class="step-item">Follow the on-screen prompts, which will guide you through the following steps:
+                                <ul class="list-disc list-inside mt-2 pl-6 space-y-1">
+                                    <li>You may be asked to download the Microsoft Authenticator app. Since it's likely already installed, you can proceed. Click "<strong>Next</strong>".</li>
+                                    <li>A QR code will be displayed on your computer screen. 📷</li>
+                                    <li>Open the <strong>Microsoft Authenticator</strong> app on your phone/iPad.</li>
+								    <li>Tap "<strong>Add account</strong>" (or the "<strong>+</strong>" icon).</li>
+									<img src="./assets/Add accoun.jpeg" alt="Descriptive alt text" class="mt-4 rounded-md shadow-md">
+                                    <li>Select "<strong>Work or school account</strong>".</li>
+									<img src="./assets/Work or school account.png" alt="Descriptive alt text" class="mt-4 rounded-md shadow-md">
+                                    <li>Tap "<strong>Scan a QR code</strong>".</li>
+                                    <li>Use your phone's camera to scan the QR code displayed on your computer screen.</li>
+                                    <li>Your account will be added to the app. You may be asked to approve a test notification on your phone to confirm setup.</li>
+                                    <li>Click "<strong>Next</strong>" on your computer screen once the account is successfully added to the app.</li>
+                                    <li>You will see a confirmation that the Authenticator app is set up. Click "<strong>Done</strong>". ✅</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="mobile" class="content-section">
+                <h2 class="text-2xl font-semibold text-red-700 mb-4">2: Setting Up Mobile Verification (Store Mobile) 💬</h2>
+                <p class="mb-6 text-gray-600">This section guides you through adding your store mobile number for verification of your work email account.</p>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-700 mb-2">2.1 Access Security Info Portal 💻</h3>
+                        <ul class="list-none space-y-2">
+                            <li class="step-item">Log in to your work email account using your web browser on your BO-PC.</li>
+                            <li class="step-item">Once logged in, navigate to the Microsoft sign-ins portal: <a href="https://mysignins.microsoft.com" target="_blank" class="text-blue-600 hover:underline">https://mysignins.microsoft.com</a>.</li>
+                            <li class="step-item">On the left-hand menu or main page, locate and click on "<strong>Security info</strong>".</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-700 mb-2">2.2 Add Phone as a Sign-in Method</h3>
+                        <ul class="list-none space-y-2">
+                            <li class="step-item">On the Security info page, click on "<strong>Add sign-in method</strong>".</li>
+							<img src="./assets/Add sign-in method.png" alt="Descriptive alt text" class="mt-4 rounded-md shadow-md">
+                            <li class="step-item">From the dropdown menu, select "<strong>Phone</strong>" and click "<strong>Add</strong>".</li>
+							<img src="./assets/dropdown menu Phone.png " alt="Descriptive alt text" class="mt-4 rounded-md shadow-md">
+                            <li class="step-item">Follow the on-screen prompts, which will guide you through the following steps:
+                                <ul class="list-disc list-inside mt-2 pl-6 space-y-1">
+                                    <li>You will need to select your country code and enter the Mobile number for your store mobile. Click "<strong>Next</strong>".</li>
+                                    <li>You will then need to enter the code received on your phone (via SMS or phone call, depending on your selection). Click "<strong>Next</strong>".</li>
+                                    <li>You will see a confirmation that your phone number is set up for verification. Click "<strong>Done</strong>". ✅</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="notes" class="content-section">
+                <h2 class="text-2xl font-semibold text-red-700 mb-4">Important Notes & Conclusion 📌</h2>
+                <p class="mb-4">Successfully setting up Multi-Factor Authentication is a crucial step in safeguarding your work email account and protecting sensitive information. MFA is a vital security measure that significantly reduces the risk of unauthorized access, even if your password falls into the wrong hands.</p>
+                <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-md mb-6">
+                    <p class="text-green-700">Thank you for taking the time to complete this setup. Your commitment to these security practices helps maintain a secure and trustworthy environment for everyone.</p>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">Need Help?</h3>
+                <p class="text-gray-600">If you encounter any issues or have questions regarding MFA, please don't hesitate to contact your IT support team. Your security is our priority.</p>
+                <p class="mt-4 text-sm text-gray-500">Document Ref: EFFC-McD IT Dept, Version 1, Dated: 14 May 2025 (Original Author: Bibin.Sukumaran)</p>
+            </section>
+        </main>
+
+        <footer class="bg-gray-800 text-gray-300 text-center p-4">
+            <p>&copy; <span id="currentYear"></span> Emirates Fast Food Company LLC – McDonald’s UAE (EFFC-McD UAE). All rights reserved.</p>
+            <p class="text-xs mt-1">This is an internal guide. Do not reproduce or disclose without prior written consent.</p>
+        </footer>
+    </div>
+
+    <script>
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const contentSections = document.querySelectorAll('.content-section');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetTab = button.dataset.tab;
+
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.tab === targetTab) {
+                        btn.classList.add('active');
+                    }
+                });
+
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === targetTab) {
+                        section.classList.add('active');
+                    }
+                });
+            });
+        });
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
